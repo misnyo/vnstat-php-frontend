@@ -33,8 +33,9 @@
         global $iface, $page, $graph, $script, $style;
         global $iface_list, $iface_title;   
         global $page_list, $page_title;
+		global $language;
         
-        $p = "&amp;graph=$graph&amp;style=$style";
+        $p = "&amp;graph=$graph&amp;style=$style&lang=$language";
 
         print "<ul class=\"iface\">\n";
         foreach ($iface_list as $if)
@@ -140,6 +141,19 @@
         }
         print "</table>\n";
     }
+	
+	function write_lang_select()
+	{
+		global $lang_list, $language;
+		//print "<form method=\"GET\" id=\"langform\" action=\"\">";
+		print "<select id=\"lang\" onchange=\"document.location.href = '?lang='+this.value\">";
+		foreach( $lang_list as $lang )
+		{
+			print "<option value=\"$lang\"" . ($lang == $language ? "selected=\"selected\"" : "") . ">$lang</option>";
+		}
+		print "</select>";
+		//print "</form>";
+	}
 
     get_vnstat_data();
 
@@ -189,7 +203,10 @@
     }
     ?>
     </div>
-    <div id="footer"><a href="http://www.sqweek.com/">vnStat PHP frontend</a> 1.5.1 - &copy;2006-2010 Bjorge Dijkstra (bjd _at_ jooz.net)</div>
+    <div id="footer">
+		<a href="http://www.sqweek.com/">vnStat PHP frontend</a> 1.5.1 - &copy;2006-2010 Bjorge Dijkstra (bjd _at_ jooz.net)
+		<?php write_lang_select(); ?>
+	</div>
   </div>
 </div>
 

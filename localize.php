@@ -1,6 +1,10 @@
 <?php
     // setup locale and translation
     setlocale(LC_ALL, $locale);
+	
+    if(isset($_GET['lang']))
+		$language = $_GET['lang'];
+		
     require "lang/$language.php";
 
     function T($str)

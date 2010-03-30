@@ -29,6 +29,7 @@
     //
     $locale = 'en_US.UTF-8';
     $language = 'nl';
+    $lang_list = array('nl', 'en');
 
     // list of network interfaces monitored by vnStat
     $iface_list = array('eth0', 'sixxs');
